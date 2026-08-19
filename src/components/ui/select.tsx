@@ -17,8 +17,8 @@ export function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        'flex h-9 w-full items-center justify-between gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm',
-        'focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        'flex h-9 w-full items-center justify-between gap-2 rounded-[10px] border border-border bg-card px-3 py-2 text-[13px] text-hi shadow-card',
+        'focus:border-primary/40 focus:ring-2 focus:ring-primary/20 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
         '[&>span]:truncate',
         className,
       )}
@@ -26,7 +26,7 @@ export function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <ChevronDown className="size-4 shrink-0 text-gray-500" />
+        <ChevronDown className="size-4 shrink-0 text-low" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -44,7 +44,7 @@ export function SelectContent({
         data-slot="select-content"
         position={position}
         className={cn(
-          'relative z-50 max-h-72 min-w-[8rem] overflow-hidden rounded-md border border-gray-200 bg-white shadow-md',
+          'relative z-50 max-h-72 min-w-[8rem] overflow-hidden rounded-xl border border-border bg-card shadow-lift',
           position === 'popper' && 'data-[side=bottom]:translate-y-1',
           className,
         )}
@@ -69,8 +69,8 @@ export function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        'relative flex w-full cursor-pointer items-center rounded-sm py-1.5 pr-8 pl-3 text-sm outline-none select-none',
-        'focus:bg-gray-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'relative flex w-full cursor-pointer items-center rounded-lg py-2 pr-8 pl-3 text-[13px] text-hi outline-none select-none',
+        'focus:bg-bg data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
         className,
       )}
       {...props}
@@ -78,7 +78,7 @@ export function SelectItem({
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
       <span className="absolute right-2 flex size-3.5 items-center justify-center">
         <SelectPrimitive.ItemIndicator>
-          <Check className="size-4 text-blue-600" />
+          <Check className="size-4 text-primary" />
         </SelectPrimitive.ItemIndicator>
       </span>
     </SelectPrimitive.Item>

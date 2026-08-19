@@ -55,10 +55,10 @@ export function BuyerDashboard({
       />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Tersedia untuk Dibeli" value={available.length} icon={Package} tone="blue" />
-        <StatCard label="Total Berat Tersedia" value={formatKg(totalWeight)} icon={Weight} tone="green" />
-        <StatCard label="Kapal Aktif" value={activeShips} icon={Anchor} tone="purple" />
-        <StatCard label="Invoice Pending" value={pendingInvoices} icon={FileText} tone="amber" />
+        <StatCard label="Tersedia untuk Dibeli" value={available.length} icon={Package} tone="primary" />
+        <StatCard label="Total Berat Tersedia" value={formatKg(totalWeight)} icon={Weight} tone="success" />
+        <StatCard label="Kapal Aktif" value={activeShips} icon={Anchor} tone="accent" />
+        <StatCard label="Invoice Pending" value={pendingInvoices} icon={FileText} tone="warning" />
       </div>
 
       <Card className="mt-5">
@@ -67,20 +67,20 @@ export function BuyerDashboard({
         </CardHeader>
         <CardContent>
           {byCategory.length === 0 ? (
-            <p className="text-sm text-gray-500">Belum ada hasil tangkapan tersedia.</p>
+            <p className="text-sm text-mid">Belum ada hasil tangkapan tersedia.</p>
           ) : (
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {byCategory.map((c) => (
-                <div key={c.id} className="rounded-lg border border-gray-200 p-4">
+                <div key={c.id} className="rounded-lg border border-border p-4">
                   <div className="mb-1.5 flex items-center gap-2">
                     <span className="size-2.5 rounded-full" style={{ backgroundColor: c.color }} />
-                    <p className="text-sm font-medium text-gray-900">{c.category_name}</p>
+                    <p className="text-sm font-medium text-hi">{c.category_name}</p>
                   </div>
-                  <p className="text-lg font-semibold text-gray-900">{formatKg(c.weight)}</p>
-                  <p className="mt-0.5 text-xs text-gray-500">
+                  <p className="text-lg font-semibold text-hi">{formatKg(c.weight)}</p>
+                  <p className="mt-0.5 text-xs text-mid">
                     {formatIDR(c.price_per_kg ?? 0)} / Kg
                   </p>
-                  <p className="mt-1.5 text-sm font-medium text-green-700">
+                  <p className="mt-1.5 text-sm font-medium text-success">
                     Estimasi {formatIDR(c.value)}
                   </p>
                 </div>
@@ -117,7 +117,7 @@ export function BuyerDashboard({
                   const scale = scales.find((s) => s.id === w.scale_id)
                   return (
                     <TableRow key={w.id}>
-                      <TableCell className="font-medium text-gray-900">
+                      <TableCell className="font-medium text-hi">
                         {category?.category_name ?? '—'}
                       </TableCell>
                       <TableCell>{landing?.ship.vessel_name ?? '—'}</TableCell>
@@ -136,7 +136,7 @@ export function BuyerDashboard({
                           ) : null}
                         </div>
                       </TableCell>
-                      <TableCell className="text-right font-medium text-gray-900">
+                      <TableCell className="text-right font-medium text-hi">
                         {formatIDR(w.weight_kg * (category?.price_per_kg ?? 0))}
                       </TableCell>
                     </TableRow>

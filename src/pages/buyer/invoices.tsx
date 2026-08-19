@@ -67,7 +67,7 @@ export function InvoicesPage({ buyerUserId }: { buyerUserId: number }) {
               <TableBody>
                 {myInvoices.map((inv) => (
                   <TableRow key={inv.id}>
-                    <TableCell className="font-medium text-gray-900">{inv.invoice_number}</TableCell>
+                    <TableCell className="font-medium text-hi">{inv.invoice_number}</TableCell>
                     <TableCell>{formatDateTime(inv.created_at)}</TableCell>
                     <TableCell>{inv.items.length} item</TableCell>
                     <TableCell className="font-medium">{formatIDR(inv.total)}</TableCell>
@@ -118,11 +118,11 @@ export function InvoicesPage({ buyerUserId }: { buyerUserId: number }) {
             <div className="space-y-4">
               <div className="flex flex-wrap justify-between gap-3 text-sm">
                 <div>
-                  <p className="text-gray-500">Tanggal terbit</p>
-                  <p className="text-gray-900">{formatDateTime(detail.created_at)}</p>
+                  <p className="text-mid">Tanggal terbit</p>
+                  <p className="text-hi">{formatDateTime(detail.created_at)}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-gray-500">Status</p>
+                  <p className="text-mid">Status</p>
                   <span
                     className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor(detail.status)}`}
                   >
@@ -131,7 +131,7 @@ export function InvoicesPage({ buyerUserId }: { buyerUserId: number }) {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-lg border border-gray-200">
+              <div className="overflow-hidden rounded-lg border border-border">
                 <Table>
                   <TableHeader>
                     <TableRow>
@@ -156,22 +156,22 @@ export function InvoicesPage({ buyerUserId }: { buyerUserId: number }) {
 
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Subtotal</span>
-                  <span className="text-gray-900">{formatIDR(detail.subtotal)}</span>
+                  <span className="text-mid">Subtotal</span>
+                  <span className="text-hi">{formatIDR(detail.subtotal)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Biaya penanganan</span>
-                  <span className="text-gray-900">{formatIDR(detail.handling_fee)}</span>
+                  <span className="text-mid">Biaya penanganan</span>
+                  <span className="text-hi">{formatIDR(detail.handling_fee)}</span>
                 </div>
                 <Separator />
                 <div className="flex items-baseline justify-between">
-                  <span className="font-medium text-gray-900">Total</span>
-                  <span className="text-lg font-semibold text-green-700">
+                  <span className="font-medium text-hi">Total</span>
+                  <span className="text-lg font-semibold text-success">
                     {formatIDR(detail.total)}
                   </span>
                 </div>
                 {detail.paid_at ? (
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-mid">
                     Dibayar pada {formatDateTime(detail.paid_at)}
                   </p>
                 ) : null}

@@ -70,7 +70,7 @@ export function WeighingPage({ landingId, onBack }: { landingId: number; onBack:
   if (!landing) {
     return (
       <div className="p-6">
-        <p className="text-gray-600">Data pendaratan tidak ditemukan.</p>
+        <p className="text-mid">Data pendaratan tidak ditemukan.</p>
         <Button variant="outline" className="mt-4" onClick={onBack}>
           <ArrowLeft /> Kembali
         </Button>
@@ -185,17 +185,17 @@ export function WeighingPage({ landingId, onBack }: { landingId: number; onBack:
               className={cn(
                 'rounded-xl border-2 px-6 py-8 text-center transition-colors',
                 reading?.is_stable
-                  ? 'border-green-300 bg-green-50'
+                  ? 'border-success/35 bg-success/8'
                   : isConnected
-                    ? 'border-blue-200 bg-blue-50'
-                    : 'border-gray-200 bg-gray-50',
+                    ? 'border-primary/25 bg-primary/8'
+                    : 'border-border bg-bg',
               )}
             >
-              <p className="text-5xl font-semibold tabular-nums text-gray-900">
+              <p className="text-5xl font-semibold tabular-nums text-hi">
                 {(reading?.weight_kg ?? capturedWeight ?? 0).toFixed(2)}
-                <span className="ml-2 text-2xl font-normal text-gray-500">Kg</span>
+                <span className="ml-2 text-2xl font-normal text-mid">Kg</span>
               </p>
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="mt-2 text-sm text-mid">
                 {!isConnected
                   ? 'Menunggu koneksi timbangan…'
                   : reading?.is_stable
@@ -203,7 +203,7 @@ export function WeighingPage({ landingId, onBack }: { landingId: number; onBack:
                     : 'Menstabilkan…'}
               </p>
               {reading ? (
-                <p className="mt-2 text-xs text-gray-400">
+                <p className="mt-2 text-xs text-low">
                   Baterai {reading.battery_level}% • {reading.temperature_celsius}°C •{' '}
                   {formatDateTime(reading.reading_timestamp)}
                 </p>
@@ -211,8 +211,8 @@ export function WeighingPage({ landingId, onBack }: { landingId: number; onBack:
             </div>
 
             {!isConnected ? (
-              <div className="flex items-center justify-between gap-3 rounded-lg bg-amber-50 px-4 py-3">
-                <p className="text-sm text-amber-800">
+              <div className="flex items-center justify-between gap-3 rounded-lg bg-warning/10 px-4 py-3">
+                <p className="text-sm text-[#b4762f]">
                   Timbangan tidak terhubung. Berat stabil terakhir tetap tersimpan sementara.
                 </p>
                 <Button size="sm" variant="outline" onClick={reconnect}>
@@ -258,32 +258,32 @@ export function WeighingPage({ landingId, onBack }: { landingId: number; onBack:
             </Field>
 
             {detection ? (
-              <div className="space-y-2 rounded-lg bg-purple-50 p-3">
+              <div className="space-y-2 rounded-lg bg-accent/8 p-3">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="size-4 text-purple-600" />
-                  <p className="text-sm font-medium text-purple-900">Hasil Deteksi</p>
+                  <Sparkles className="size-4 text-accent" />
+                  <p className="text-sm font-medium text-secondary">Hasil Deteksi</p>
                 </div>
-                <p className="text-sm text-gray-700">{detection.detected_category}</p>
+                <p className="text-sm text-mid">{detection.detected_category}</p>
                 <div className="flex flex-wrap gap-1.5">
                   <Badge variant="ai">AI: {detection.confidence_score}% akurat</Badge>
                   <Badge variant="success">Kualitas: {detection.quality_grade}</Badge>
                   <Badge variant="secondary">± {detection.estimated_length_cm} cm</Badge>
                 </div>
                 {!detector.isLive ? (
-                  <p className="text-xs text-purple-700">
+                  <p className="text-xs text-secondary">
                     Sumber: {detection.source} — kamera IoT belum terpasang.
                   </p>
                 ) : null}
               </div>
             ) : (
-              <p className="rounded-lg bg-gray-50 px-3 py-2.5 text-xs text-gray-500">
+              <p className="rounded-lg bg-bg px-3 py-2.5 text-xs text-mid">
                 Deteksi spesies bersifat opsional. Kategori tetap bisa dipilih manual.
               </p>
             )}
 
-            <div className="rounded-lg border border-gray-200 px-3 py-2.5">
-              <p className="text-xs text-gray-500">Berat akan disimpan</p>
-              <p className="text-lg font-semibold text-gray-900">
+            <div className="rounded-lg border border-border px-3 py-2.5">
+              <p className="text-xs text-mid">Berat akan disimpan</p>
+              <p className="text-lg font-semibold text-hi">
                 {capturedWeight != null ? formatKg(capturedWeight) : '—'}
               </p>
             </div>
@@ -293,7 +293,7 @@ export function WeighingPage({ landingId, onBack }: { landingId: number; onBack:
               Simpan Penimbangan
             </Button>
             {!canSave && capturedWeight == null ? (
-              <p className="text-center text-xs text-gray-500">Menunggu berat stabil dari timbangan.</p>
+              <p className="text-center text-xs text-mid">Menunggu berat stabil dari timbangan.</p>
             ) : null}
           </CardContent>
         </Card>
@@ -333,7 +333,7 @@ export function WeighingPage({ landingId, onBack }: { landingId: number; onBack:
                             {r.confidence_score}%
                           </span>
                         ) : (
-                          <span className="text-gray-400">—</span>
+                          <span className="text-low">—</span>
                         )}
                       </TableCell>
                       <TableCell>
@@ -350,7 +350,7 @@ export function WeighingPage({ landingId, onBack }: { landingId: number; onBack:
                           <Button
                             size="sm"
                             variant="ghost"
-                            className="text-red-600 hover:bg-red-50"
+                            className="text-danger hover:bg-danger/8"
                             onClick={() => {
                               voidWeighing(r.id)
                               toast.success('Penimbangan dibatalkan')

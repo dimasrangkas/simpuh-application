@@ -87,9 +87,9 @@ export function SettingsPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3">
-                <Info className="mt-0.5 size-4 shrink-0 text-blue-600" />
-                <p className="text-sm text-blue-900">
+              <div className="flex items-start gap-3 rounded-lg border border-primary/25 bg-primary/8 px-4 py-3">
+                <Info className="mt-0.5 size-4 shrink-0 text-primary" />
+                <p className="text-sm text-secondary">
                   Seluruh perhitungan PNBP di aplikasi memakai satu fungsi terpusat
                   (<code className="text-xs">calculatePNBP</code>). Mengubah metode di sini langsung
                   berlaku di dashboard, laporan, dan invoice.
@@ -163,13 +163,13 @@ export function SettingsPage() {
                 <TableBody>
                   {categories.map((c) => (
                     <TableRow key={c.id}>
-                      <TableCell className="font-medium text-gray-900">{c.category_name}</TableCell>
+                      <TableCell className="font-medium text-hi">{c.category_name}</TableCell>
                       <TableCell>{formatIDR(c.price_per_kg ?? 0)}</TableCell>
                       <TableCell>{formatIDR(c.pnbp_rate)}</TableCell>
                       <TableCell>
                         <span className="inline-flex items-center gap-1.5">
                           <span
-                            className="size-3 rounded-full border border-gray-300"
+                            className="size-3 rounded-full border border-border"
                             style={{ backgroundColor: c.color }}
                           />
                           <code className="text-xs">{c.color}</code>
@@ -195,7 +195,7 @@ export function SettingsPage() {
                           <Button
                             size="sm"
                             variant="ghost"
-                            className="text-red-600 hover:bg-red-50"
+                            className="text-danger hover:bg-danger/8"
                             onClick={() => {
                               deleteCategory(c.id)
                               toast.success('Kategori dihapus')
@@ -227,15 +227,15 @@ export function SettingsPage() {
                 {CREW_TAG_COLORS.map((c, i) => (
                   <div
                     key={c.value}
-                    className="flex items-center gap-3 rounded-lg border border-gray-200 p-3"
+                    className="flex items-center gap-3 rounded-lg border border-border p-3"
                   >
                     <span
-                      className="size-6 shrink-0 rounded-full border border-gray-300"
+                      className="size-6 shrink-0 rounded-full border border-border"
                       style={{ backgroundColor: c.color }}
                     />
                     <div className="min-w-0">
-                      <p className="text-sm font-medium text-gray-900">{c.value}</p>
-                      <p className="text-xs text-gray-500">Urutan {i + 1}</p>
+                      <p className="text-sm font-medium text-hi">{c.value}</p>
+                      <p className="text-xs text-mid">Urutan {i + 1}</p>
                     </div>
                   </div>
                 ))}
@@ -256,8 +256,8 @@ export function SettingsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               {ALL_ROLES.map((role) => (
-                <div key={role} className="rounded-lg border border-gray-200 p-4">
-                  <p className="mb-2 text-sm font-medium text-gray-900">{ROLE_LABEL[role]}</p>
+                <div key={role} className="rounded-lg border border-border p-4">
+                  <p className="mb-2 text-sm font-medium text-hi">{ROLE_LABEL[role]}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {NAV_BY_ROLE[role].map((item) => (
                       <Badge key={item.id} variant="secondary">

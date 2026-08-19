@@ -20,10 +20,16 @@ import type { Role, User } from '@/types'
 
 const SESSION_KEY = 'simpuh.session'
 
-/** Peran tambahan yang dipegang akun tertentu, di luar `user.role` utamanya. */
+/**
+ * Peran tambahan yang dipegang akun tertentu, di luar `user.role` utamanya.
+ *
+ * Catatan: halaman Pemilik Kapal selalu dibatasi kapal milik akun yang login.
+ * Akun yang tidak punya kapal (mis. Admin) memang akan melihat tampilan kosong
+ * di sana — itu perilaku yang benar, bukan bug.
+ */
 const EXTRA_ROLES: Record<number, Role[]> = {
   5: ['PPS_OFFICER', 'SHIP_OWNER', 'BUYER'], // Admin dapat meninjau semua context
-  1: ['SHIP_OWNER'],
+  2: ['BUYER'], // Agus juga terdaftar sebagai pembeli
 }
 
 interface Session {

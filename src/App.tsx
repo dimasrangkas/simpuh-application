@@ -109,7 +109,7 @@ function AuthenticatedApp() {
         return <SettingsPage />
 
       default:
-        return <p className="text-gray-600">Halaman tidak ditemukan.</p>
+        return <p className="text-mid">Halaman tidak ditemukan.</p>
     }
   }
 

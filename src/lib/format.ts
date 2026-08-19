@@ -30,14 +30,14 @@ export function formatDate(iso: string) {
 
 export function statusColor(status: AnyStatus | string) {
   const map: Record<string, string> = {
-    IN_PROGRESS: 'bg-blue-100 text-blue-800',
-    COMPLETED: 'bg-green-100 text-green-800',
-    CANCELED: 'bg-red-100 text-red-800',
-    PENDING: 'bg-yellow-100 text-yellow-800',
-    PAID: 'bg-green-100 text-green-800',
-    CONFIRMED: 'bg-blue-100 text-blue-800',
+    IN_PROGRESS: 'bg-primary/10 text-secondary',
+    COMPLETED: 'bg-success/10 text-success',
+    CANCELED: 'bg-danger/10 text-danger',
+    PENDING: 'bg-warning/15 text-[#b4762f]',
+    PAID: 'bg-success/10 text-success',
+    CONFIRMED: 'bg-primary/10 text-secondary',
   }
-  return map[status] ?? 'bg-gray-100 text-gray-800'
+  return map[status] ?? 'bg-bg text-hi'
 }
 
 export function statusLabel(status: AnyStatus | string) {
@@ -53,9 +53,9 @@ export function statusLabel(status: AnyStatus | string) {
 }
 
 export function confidenceColor(score: number) {
-  if (score >= 95) return 'text-green-600'
-  if (score >= 90) return 'text-blue-600'
-  return 'text-amber-600'
+  if (score >= 95) return 'text-success'
+  if (score >= 90) return 'text-primary'
+  return 'text-warning'
 }
 
 export const CREW_TAG_COLORS: { value: CrewTagColor; label: string; color: string }[] = [

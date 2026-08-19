@@ -94,9 +94,9 @@ export function ScalesPage() {
       />
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="Total Perangkat" value={scales.length} icon={Activity} tone="blue" />
-        <StatCard label="Online" value={online.length} icon={Wifi} tone="green" />
-        <StatCard label="Offline" value={scales.length - online.length} icon={WifiOff} tone="gray" />
+        <StatCard label="Total Perangkat" value={scales.length} icon={Activity} tone="primary" />
+        <StatCard label="Online" value={online.length} icon={Wifi} tone="success" />
+        <StatCard label="Offline" value={scales.length - online.length} icon={WifiOff} tone="muted" />
       </div>
 
       <Card className="mt-5">
@@ -120,7 +120,7 @@ export function ScalesPage() {
               ) : (
                 scales.map((s) => (
                   <TableRow key={s.id}>
-                    <TableCell className="font-medium text-gray-900">{s.unique_scale_id}</TableCell>
+                    <TableCell className="font-medium text-hi">{s.unique_scale_id}</TableCell>
                     <TableCell>{s.location}</TableCell>
                     <TableCell>
                       <Badge variant={s.status === 1 ? 'success' : 'destructive'}>
@@ -159,7 +159,7 @@ export function ScalesPage() {
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="text-red-600 hover:bg-red-50"
+                          className="text-danger hover:bg-danger/8"
                           onClick={() => {
                             deleteScale(s.id)
                             if (monitorId === s.id) setMonitorId(null)
@@ -257,8 +257,8 @@ export function ScalesPage() {
                   }
                 />
               </Field>
-              <div className="flex items-center justify-between rounded-lg border border-gray-200 px-3 py-2.5">
-                <span className="text-sm text-gray-700">Perangkat online</span>
+              <div className="flex items-center justify-between rounded-lg border border-border px-3 py-2.5">
+                <span className="text-sm text-mid">Perangkat online</span>
                 <Switch
                   checked={draft.status === 1}
                   onCheckedChange={(v) => setDraft({ ...draft, status: v ? 1 : 0 })}

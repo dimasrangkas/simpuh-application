@@ -48,15 +48,15 @@ export function AdminDashboard() {
       <PageHeader title="Dashboard Admin" description="Ringkasan sistem SIMPUH" />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Total Pengguna" value={users.length} icon={Users} tone="blue" />
-        <StatCard label="Kapal Terdaftar" value={ships.length} icon={Anchor} tone="green" />
+        <StatCard label="Total Pengguna" value={users.length} icon={Users} tone="primary" />
+        <StatCard label="Kapal Terdaftar" value={ships.length} icon={Anchor} tone="success" />
         <StatCard
           label="Timbangan Online"
           value={`${online.length}/${scales.length}`}
           icon={ScaleIcon}
-          tone="purple"
+          tone="accent"
         />
-        <StatCard label="Total Berat Tercatat" value={formatKg(totalWeight)} icon={Weight} tone="amber" />
+        <StatCard label="Total Berat Tercatat" value={formatKg(totalWeight)} icon={Weight} tone="warning" />
       </div>
 
       <div className="mt-5 grid gap-5 lg:grid-cols-2">
@@ -66,8 +66,8 @@ export function AdminDashboard() {
           </CardHeader>
           <CardContent className="space-y-2">
             {byRole.map((r) => (
-              <div key={r.role} className="flex items-center justify-between rounded-lg bg-gray-50 px-3 py-2">
-                <span className="text-sm text-gray-700">{ROLE_LABEL[r.role]}</span>
+              <div key={r.role} className="flex items-center justify-between rounded-lg bg-bg px-3 py-2">
+                <span className="text-sm text-mid">{ROLE_LABEL[r.role]}</span>
                 <Badge variant="secondary">{r.count} pengguna</Badge>
               </div>
             ))}
@@ -79,14 +79,14 @@ export function AdminDashboard() {
             <CardTitle>Estimasi PNBP Terkumpul</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-semibold text-gray-900">{formatIDR(totalPNBP)}</p>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="text-3xl font-semibold text-hi">{formatIDR(totalPNBP)}</p>
+            <p className="mt-1 text-sm text-mid">
               Metode aktif:{' '}
               {config.pnbp_method === 'per_kg_rate'
                 ? 'Tarif per Kg per kategori'
                 : `${config.pnbp_percent}% dari nilai transaksi`}
             </p>
-            <p className="mt-3 text-xs text-gray-400">
+            <p className="mt-3 text-xs text-low">
               Formula demo — dapat diubah di halaman Pengaturan.
             </p>
           </CardContent>
@@ -110,7 +110,7 @@ export function AdminDashboard() {
             <TableBody>
               {landings.map((l) => (
                 <TableRow key={l.id}>
-                  <TableCell className="font-medium text-gray-900">{l.ship.vessel_name}</TableCell>
+                  <TableCell className="font-medium text-hi">{l.ship.vessel_name}</TableCell>
                   <TableCell>{formatDateTime(l.landing_date)}</TableCell>
                   <TableCell>{l.officer.name}</TableCell>
                   <TableCell className="text-right">

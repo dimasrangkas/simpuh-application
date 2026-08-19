@@ -134,12 +134,12 @@ export function ShipsPage({ ownerUserId }: { ownerUserId: number }) {
                 myShips.map((s) => (
                   <TableRow
                     key={s.id}
-                    className={selectedShipId === s.id ? 'bg-blue-50 hover:bg-blue-50' : undefined}
+                    className={selectedShipId === s.id ? 'bg-primary/8 hover:bg-primary/8' : undefined}
                   >
                     <TableCell>
                       <button
                         type="button"
-                        className="font-medium text-gray-900 hover:text-blue-600"
+                        className="font-medium text-hi hover:text-primary"
                         onClick={() => setSelectedShipId(s.id)}
                       >
                         {s.vessel_name}
@@ -168,7 +168,7 @@ export function ShipsPage({ ownerUserId }: { ownerUserId: number }) {
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="text-red-600 hover:bg-red-50"
+                          className="text-danger hover:bg-danger/8"
                           onClick={() => handleDeleteShip(s)}
                         >
                           <Trash2 />
@@ -188,7 +188,7 @@ export function ShipsPage({ ownerUserId }: { ownerUserId: number }) {
           <Card>
             <CardHeader className="flex-row items-center justify-between">
               <CardTitle className="flex items-center gap-2">
-                <Users className="size-4 text-gray-500" />
+                <Users className="size-4 text-mid" />
                 ABK — {selectedShip.vessel_name}
               </CardTitle>
               <Button size="sm" variant="outline" onClick={() => setCrewDraft(EMPTY_CREW)}>
@@ -211,12 +211,12 @@ export function ShipsPage({ ownerUserId }: { ownerUserId: number }) {
                   ) : (
                     shipCrews.map((c) => (
                       <TableRow key={c.id}>
-                        <TableCell className="font-medium text-gray-900">{c.name}</TableCell>
+                        <TableCell className="font-medium text-hi">{c.name}</TableCell>
                         <TableCell className="text-xs">{c.identification_number}</TableCell>
                         <TableCell>
                           <span className="inline-flex items-center gap-1.5">
                             <span
-                              className="size-3 rounded-full border border-gray-300"
+                              className="size-3 rounded-full border border-border"
                               style={{ backgroundColor: crewTagHex(c.crew_tag_color) }}
                             />
                             {c.crew_tag_color}
@@ -241,7 +241,7 @@ export function ShipsPage({ ownerUserId }: { ownerUserId: number }) {
                             <Button
                               size="sm"
                               variant="ghost"
-                              className="text-red-600 hover:bg-red-50"
+                              className="text-danger hover:bg-danger/8"
                               onClick={() => {
                                 deleteCrew(c.id)
                                 toast.success('ABK dihapus')
@@ -262,7 +262,7 @@ export function ShipsPage({ ownerUserId }: { ownerUserId: number }) {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Anchor className="size-4 text-gray-500" />
+                <Anchor className="size-4 text-mid" />
                 Riwayat Pendaratan
               </CardTitle>
             </CardHeader>

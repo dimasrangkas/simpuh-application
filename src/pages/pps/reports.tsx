@@ -198,10 +198,10 @@ export function ReportsPage() {
       </Card>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Total Transaksi" value={rows.length} icon={Receipt} tone="blue" />
-        <StatCard label="Total Berat" value={formatKg(totalWeight)} icon={Weight} tone="green" />
-        <StatCard label="Nilai Tangkapan" value={formatIDR(totalValue)} icon={Coins} tone="purple" />
-        <StatCard label="Estimasi PNBP" value={formatIDR(totalPNBP)} icon={Coins} tone="amber" />
+        <StatCard label="Total Transaksi" value={rows.length} icon={Receipt} tone="primary" />
+        <StatCard label="Total Berat" value={formatKg(totalWeight)} icon={Weight} tone="success" />
+        <StatCard label="Nilai Tangkapan" value={formatIDR(totalValue)} icon={Coins} tone="accent" />
+        <StatCard label="Estimasi PNBP" value={formatIDR(totalPNBP)} icon={Coins} tone="warning" />
       </div>
 
       <Card className="mt-5">

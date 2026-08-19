@@ -5,23 +5,23 @@ import type * as React from 'react'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: 'bg-blue-600 text-white hover:bg-blue-700',
-        success: 'bg-green-600 text-white hover:bg-green-700',
-        destructive: 'bg-red-600 text-white hover:bg-red-700',
-        outline: 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50',
-        secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200',
-        ghost: 'text-gray-700 hover:bg-gray-100',
-        link: 'text-blue-600 underline-offset-4 hover:underline',
+        default: 'bg-primary text-white shadow-card hover:bg-secondary',
+        success: 'bg-success text-white shadow-card hover:brightness-95',
+        destructive: 'bg-danger text-white shadow-card hover:brightness-95',
+        outline: 'border border-border bg-card text-hi hover:bg-bg',
+        secondary: 'bg-bg border border-border text-mid hover:text-hi',
+        ghost: 'text-mid hover:bg-bg hover:text-hi',
+        link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
-        default: 'h-9 px-4 py-2',
-        sm: 'h-8 rounded-md px-3 text-xs',
-        lg: 'h-11 rounded-md px-6',
-        icon: 'h-9 w-9',
+        default: 'h-9 px-4 text-[13px]',
+        sm: 'h-8 rounded-lg px-3 text-[11.5px]',
+        lg: 'h-11 px-6 text-sm',
+        icon: 'size-9',
       },
     },
     defaultVariants: { variant: 'default', size: 'default' },

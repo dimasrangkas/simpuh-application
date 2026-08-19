@@ -159,13 +159,13 @@ export function CrewReportPage({ ownerUserId }: { ownerUserId: number }) {
       </Card>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="Jumlah ABK" value={myCrews.length} icon={Users} tone="purple" />
-        <StatCard label="Total Berat Ditag" value={formatKg(totalWeight)} icon={Weight} tone="green" />
+        <StatCard label="Jumlah ABK" value={myCrews.length} icon={Users} tone="accent" />
+        <StatCard label="Total Berat Ditag" value={formatKg(totalWeight)} icon={Weight} tone="success" />
         <StatCard
           label="Belum Ditag"
           value={formatKg(untaggedWeight)}
           icon={Weight}
-          tone="amber"
+          tone="warning"
           hint={untaggedWeight > 0 ? 'Perlu dialokasikan di halaman Tag ABK' : undefined}
         />
       </div>
@@ -194,11 +194,11 @@ export function CrewReportPage({ ownerUserId }: { ownerUserId: number }) {
                   const percent = totalWeight ? (s.weight / totalWeight) * 100 : 0
                   return (
                     <TableRow key={s.crew.id}>
-                      <TableCell className="font-medium text-gray-900">{s.crew.name}</TableCell>
+                      <TableCell className="font-medium text-hi">{s.crew.name}</TableCell>
                       <TableCell>
                         <span className="inline-flex items-center gap-1.5">
                           <span
-                            className="size-3 rounded-full border border-gray-300"
+                            className="size-3 rounded-full border border-border"
                             style={{ backgroundColor: crewTagHex(s.crew.crew_tag_color) }}
                           />
                           {s.crew.crew_tag_color}
@@ -208,7 +208,7 @@ export function CrewReportPage({ ownerUserId }: { ownerUserId: number }) {
                       <TableCell className="font-medium">{formatKg(s.weight)}</TableCell>
                       <TableCell>
                         <div className="flex items-center gap-2">
-                          <div className="h-2 w-24 overflow-hidden rounded-full bg-gray-200">
+                          <div className="h-2 w-24 overflow-hidden rounded-full bg-border">
                             <div
                               className="h-full rounded-full"
                               style={{
@@ -217,7 +217,7 @@ export function CrewReportPage({ ownerUserId }: { ownerUserId: number }) {
                               }}
                             />
                           </div>
-                          <span className="text-xs text-gray-500">{percent.toFixed(1)}%</span>
+                          <span className="text-xs text-mid">{percent.toFixed(1)}%</span>
                         </div>
                       </TableCell>
                       <TableCell className="text-right">{formatIDR(s.value)}</TableCell>
@@ -230,8 +230,8 @@ export function CrewReportPage({ ownerUserId }: { ownerUserId: number }) {
         </CardContent>
       </Card>
 
-      <p className="mt-3 text-right text-sm text-gray-600">
-        Total nilai tangkapan: <span className="font-semibold text-gray-900">{formatIDR(totalValue)}</span>
+      <p className="mt-3 text-right text-sm text-mid">
+        Total nilai tangkapan: <span className="font-semibold text-hi">{formatIDR(totalValue)}</span>
       </p>
     </div>
   )

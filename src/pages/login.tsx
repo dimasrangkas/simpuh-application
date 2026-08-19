@@ -24,14 +24,14 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-10">
+    <div className="flex min-h-screen items-center justify-center bg-bg px-4 py-10">
       <div className="w-full max-w-sm">
         <div className="mb-6 flex flex-col items-center text-center">
-          <div className="mb-3 rounded-xl bg-blue-600 p-3">
+          <div className="mb-3 rounded-xl bg-primary p-3">
             <Fish className="size-7 text-white" />
           </div>
-          <h1 className="text-2xl font-semibold text-gray-900">SIMPUH</h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <h1 className="text-2xl font-semibold text-hi">SIMPUH</h1>
+          <p className="mt-1 text-sm text-mid">
             Sistem Mutu &amp; Penimbangan Hasil Laut
           </p>
         </div>
@@ -61,7 +61,7 @@ export function LoginPage() {
             </Field>
 
             {error ? (
-              <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>
+              <p className="rounded-md bg-danger/8 px-3 py-2 text-sm text-danger">{error}</p>
             ) : null}
 
             <Button type="submit" disabled={loading} className="w-full">
@@ -70,23 +70,27 @@ export function LoginPage() {
             </Button>
           </form>
 
-          <div className="mt-5 rounded-md bg-gray-50 px-3 py-2.5">
-            <p className="mb-1 text-xs font-medium text-gray-600">Akun demo</p>
-            <p className="text-xs text-gray-500">
-              <code className="text-gray-700">admin@pps.kkp.go.id</code> — semua peran
+          <div className="mt-5 rounded-md bg-bg px-3 py-2.5">
+            <p className="mb-1 text-xs font-medium text-mid">Akun demo</p>
+            <p className="text-xs text-mid">
+              <code className="text-mid">agus@kapal.com</code> — Pemilik Kapal (3 kapal, data
+              terlengkap) + Pembeli
               <br />
-              <code className="text-gray-700">budi@pps.kkp.go.id</code> — Petugas PPS
+              <code className="text-mid">hendra@kapal.com</code> — Pemilik Kapal (2 kapal)
               <br />
-              <code className="text-gray-700">agus@kapal.com</code> — Pemilik Kapal
+              <code className="text-mid">budi@pps.kkp.go.id</code> — Petugas PPS
               <br />
-              <code className="text-gray-700">buyer@majujaya.com</code> — Pembeli
+              <code className="text-mid">buyer@majujaya.com</code> — Pembeli
               <br />
-              Kata sandi: <code className="text-gray-700">simpuh123</code>
+              <code className="text-mid">admin@pps.kkp.go.id</code> — Admin, bisa switch semua
+              peran
+              <br />
+              Kata sandi: <code className="text-mid">simpuh123</code>
             </p>
           </div>
         </Card>
 
-        <p className="mt-6 text-center text-xs text-gray-400">
+        <p className="mt-6 text-center text-xs text-low">
           {DEFAULT_CONFIG.organization_name} — {DEFAULT_CONFIG.organization_subtitle}
         </p>
       </div>

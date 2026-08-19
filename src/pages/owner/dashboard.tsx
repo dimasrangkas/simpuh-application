@@ -86,10 +86,10 @@ export function OwnerDashboard({
       />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Kapal Aktif" value={activeLandings.length} icon={Anchor} tone="blue" />
-        <StatCard label="Total Hasil Tangkapan" value={formatKg(totalWeight)} icon={Weight} tone="green" />
-        <StatCard label="Estimasi PNBP" value={formatIDR(totalPNBP)} icon={Coins} tone="amber" />
-        <StatCard label="Jumlah ABK" value={myCrews.length} icon={Users} tone="purple" />
+        <StatCard label="Kapal Aktif" value={activeLandings.length} icon={Anchor} tone="primary" />
+        <StatCard label="Total Hasil Tangkapan" value={formatKg(totalWeight)} icon={Weight} tone="success" />
+        <StatCard label="Estimasi PNBP" value={formatIDR(totalPNBP)} icon={Coins} tone="warning" />
+        <StatCard label="Jumlah ABK" value={myCrews.length} icon={Users} tone="accent" />
       </div>
 
       <Card className="mt-5">
@@ -98,7 +98,7 @@ export function OwnerDashboard({
         </CardHeader>
         <CardContent>
           {activeLandings.length === 0 ? (
-            <p className="text-sm text-gray-500">Tidak ada pendaratan yang sedang berjalan.</p>
+            <p className="text-sm text-mid">Tidak ada pendaratan yang sedang berjalan.</p>
           ) : (
             <div className="grid gap-3 md:grid-cols-2">
               {activeLandings.map((l) => {
@@ -107,17 +107,17 @@ export function OwnerDashboard({
                 const pending = records.length - tagged
                 const percent = records.length ? (tagged / records.length) * 100 : 0
                 return (
-                  <div key={l.id} className="rounded-lg border border-gray-200 p-4">
+                  <div key={l.id} className="rounded-lg border border-border p-4">
                     <div className="mb-2 flex items-center justify-between gap-2">
-                      <p className="font-medium text-gray-900">{l.ship.vessel_name}</p>
+                      <p className="font-medium text-hi">{l.ship.vessel_name}</p>
                       <Badge variant={pending > 0 ? 'warning' : 'success'}>
                         {pending > 0 ? `${pending} menunggu tag` : 'Semua ditag'}
                       </Badge>
                     </div>
-                    <p className="mb-2 text-xs text-gray-500">
+                    <p className="mb-2 text-xs text-mid">
                       {records.length} penimbangan • {tagged} sudah ditag
                     </p>
-                    <Progress value={percent} indicatorClassName="bg-green-600" />
+                    <Progress value={percent} indicatorClassName="bg-success" />
                   </div>
                 )
               })}
@@ -133,18 +133,18 @@ export function OwnerDashboard({
           </CardHeader>
           <CardContent className="space-y-3">
             {byCategory.length === 0 ? (
-              <p className="text-sm text-gray-500">Belum ada data.</p>
+              <p className="text-sm text-mid">Belum ada data.</p>
             ) : (
               byCategory.map((c) => (
                 <div key={c.id}>
                   <div className="mb-1 flex items-center justify-between text-sm">
-                    <span className="flex items-center gap-2 text-gray-700">
+                    <span className="flex items-center gap-2 text-mid">
                       <span className="size-2.5 rounded-full" style={{ backgroundColor: c.color }} />
                       {c.category_name}
                     </span>
-                    <span className="font-medium text-gray-900">{formatKg(c.weight)}</span>
+                    <span className="font-medium text-hi">{formatKg(c.weight)}</span>
                   </div>
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-border">
                     <div
                       className="h-full rounded-full transition-all"
                       style={{
@@ -165,21 +165,21 @@ export function OwnerDashboard({
           </CardHeader>
           <CardContent className="space-y-3">
             {byCrew.length === 0 ? (
-              <p className="text-sm text-gray-500">Belum ada ABK terdaftar.</p>
+              <p className="text-sm text-mid">Belum ada ABK terdaftar.</p>
             ) : (
               byCrew.map((c) => (
                 <div key={c.id}>
                   <div className="mb-1 flex items-center justify-between text-sm">
-                    <span className="flex items-center gap-2 text-gray-700">
+                    <span className="flex items-center gap-2 text-mid">
                       <span
-                        className="size-3 rounded-full border border-gray-300"
+                        className="size-3 rounded-full border border-border"
                         style={{ backgroundColor: crewTagHex(c.crew_tag_color) }}
                       />
                       {c.name}
                     </span>
-                    <span className="font-medium text-gray-900">{formatKg(c.weight)}</span>
+                    <span className="font-medium text-hi">{formatKg(c.weight)}</span>
                   </div>
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-border">
                     <div
                       className="h-full rounded-full transition-all"
                       style={{
@@ -234,7 +234,7 @@ export function OwnerDashboard({
                   }, 0)
                   return (
                     <TableRow key={l.id}>
-                      <TableCell className="font-medium text-gray-900">{l.ship.vessel_name}</TableCell>
+                      <TableCell className="font-medium text-hi">{l.ship.vessel_name}</TableCell>
                       <TableCell>{formatDateTime(l.landing_date)}</TableCell>
                       <TableCell>{formatKg(weight)}</TableCell>
                       <TableCell>{formatIDR(pnbp)}</TableCell>

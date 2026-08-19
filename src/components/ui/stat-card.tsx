@@ -4,34 +4,42 @@ import type * as React from 'react'
 import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 
+const TONES = {
+  primary: 'bg-primary/8 text-primary',
+  accent: 'bg-accent/10 text-accent',
+  success: 'bg-success/10 text-success',
+  warning: 'bg-warning/15 text-warning',
+  danger: 'bg-danger/10 text-danger',
+  muted: 'bg-bg text-mid',
+} as const
+
 export function StatCard({
   label,
   value,
+  unit,
   icon: Icon,
-  tone = 'blue',
+  tone = 'primary',
   hint,
 }: {
   label: string
   value: React.ReactNode
+  /** Satuan kecil di samping angka, mis. "Kg". */
+  unit?: string
   icon: LucideIcon
-  tone?: 'blue' | 'green' | 'purple' | 'amber' | 'gray'
+  tone?: keyof typeof TONES
   hint?: string
 }) {
-  const tones = {
-    blue: 'bg-blue-50 text-blue-600',
-    green: 'bg-green-50 text-green-600',
-    purple: 'bg-purple-50 text-purple-600',
-    amber: 'bg-amber-50 text-amber-600',
-    gray: 'bg-gray-100 text-gray-600',
-  }
   return (
-    <Card className="p-5">
-      <div className={cn('mb-3 inline-flex rounded-lg p-2', tones[tone])}>
-        <Icon className="size-5" />
+    <Card className="px-[18px] pt-[18px] pb-4">
+      <div className={cn('flex size-[38px] items-center justify-center rounded-[11px]', TONES[tone])}>
+        <Icon className="size-[18px]" />
       </div>
-      <p className="text-2xl font-semibold text-gray-900">{value}</p>
-      <p className="mt-0.5 text-sm text-gray-500">{label}</p>
-      {hint ? <p className="mt-1 text-xs text-gray-400">{hint}</p> : null}
+      <p className="mt-3.5 text-xs font-semibold text-mid">{label}</p>
+      <p className="tabular mt-0.5 text-[25px] leading-tight font-extrabold tracking-tight text-hi">
+        {value}
+        {unit ? <small className="ml-1 text-[12.5px] font-medium text-low">{unit}</small> : null}
+      </p>
+      {hint ? <p className="mt-1.5 text-[11px] text-low">{hint}</p> : null}
     </Card>
   )
 }
@@ -46,13 +54,50 @@ export function PageHeader({
   actions?: React.ReactNode
 }) {
   return (
-    <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
+    <div className="mb-5 flex flex-wrap items-end justify-between gap-2.5">
       <div>
-        <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
-        {description ? <p className="mt-1 text-sm text-gray-500">{description}</p> : null}
+        <h1 className="text-[23px] leading-tight font-extrabold tracking-tight text-hi">{title}</h1>
+        {description ? <p className="mt-1 text-[13px] text-mid">{description}</p> : null}
       </div>
       {actions ? <div className="flex flex-wrap items-center gap-2">{actions}</div> : null}
     </div>
+  )
+}
+
+/** Label pemisah antar bagian, dengan garis gradien seperti sistem desain acuan. */
+export function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mt-8 mb-3 flex items-center gap-2.5 text-[11px] font-bold tracking-[1.2px] text-secondary uppercase">
+      {children}
+      <span className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+    </div>
+  )
+}
+
+/** Indikator koneksi langsung — dipakai status timbangan IoT. */
+export function LivePill({
+  children,
+  tone = 'success',
+}: {
+  children: React.ReactNode
+  tone?: 'success' | 'warning' | 'danger'
+}) {
+  const tones = {
+    success: 'text-success bg-success/8 border-success/25',
+    warning: 'text-warning bg-warning/10 border-warning/30',
+    danger: 'text-danger bg-danger/8 border-danger/25',
+  }
+  const dots = { success: 'bg-success', warning: 'bg-warning', danger: 'bg-danger' }
+  return (
+    <span
+      className={cn(
+        'inline-flex items-center gap-[7px] rounded-full border px-3 py-1.5 text-[11px] font-semibold',
+        tones[tone],
+      )}
+    >
+      <span className={cn('size-[7px] animate-pulse-dot rounded-full', dots[tone])} />
+      {children}
+    </span>
   )
 }
 
@@ -66,10 +111,10 @@ export function EmptyState({
   description?: string
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-gray-300 px-6 py-12 text-center">
-      <Icon className="mb-3 size-8 text-gray-400" />
-      <p className="text-sm font-medium text-gray-700">{title}</p>
-      {description ? <p className="mt-1 max-w-sm text-sm text-gray-500">{description}</p> : null}
+    <div className="flex flex-col items-center justify-center rounded-md border border-dashed border-border px-6 py-12 text-center">
+      <Icon className="mb-3 size-8 text-low" />
+      <p className="text-[13px] font-semibold text-mid">{title}</p>
+      {description ? <p className="mt-1 max-w-sm text-xs text-low">{description}</p> : null}
     </div>
   )
 }

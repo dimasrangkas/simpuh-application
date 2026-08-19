@@ -12,12 +12,12 @@ export function Progress({
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
-      className={cn('relative h-2 w-full overflow-hidden rounded-full bg-gray-200', className)}
+      className={cn('relative h-2 w-full overflow-hidden rounded-full bg-border', className)}
       {...props}
     >
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
-        className={cn('h-full w-full flex-1 bg-blue-600 transition-all', indicatorClassName)}
+        className={cn('h-full w-full flex-1 rounded-full bg-primary transition-all', indicatorClassName)}
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />
     </ProgressPrimitive.Root>

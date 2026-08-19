@@ -99,7 +99,7 @@ export function PurchasePage({
                     key={w.id}
                     className={cn(
                       'flex cursor-pointer items-start gap-3 rounded-lg border p-3 transition-colors',
-                      checked ? 'border-green-500 bg-green-50' : 'border-gray-200 hover:bg-gray-50',
+                      checked ? 'border-success bg-success/8' : 'border-border hover:bg-bg',
                     )}
                   >
                     <Checkbox
@@ -109,13 +109,13 @@ export function PurchasePage({
                     />
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <p className="font-medium text-gray-900">{category?.category_name ?? '—'}</p>
-                        <p className="font-semibold text-gray-900">{formatIDR(price)}</p>
+                        <p className="font-medium text-hi">{category?.category_name ?? '—'}</p>
+                        <p className="font-semibold text-hi">{formatIDR(price)}</p>
                       </div>
-                      <p className="mt-0.5 text-sm text-gray-600">
+                      <p className="mt-0.5 text-sm text-mid">
                         {landing?.ship.vessel_name ?? '—'} • {formatKg(w.weight_kg)}
                       </p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-mid">
                         {scale?.unique_scale_id ?? '—'} • {formatDateTime(w.weighed_at)}
                       </p>
                       <div className="mt-1.5 flex flex-wrap gap-1">
@@ -140,32 +140,32 @@ export function PurchasePage({
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Item dipilih</span>
-              <span className="font-medium text-gray-900">{selectedRows.length}</span>
+              <span className="text-mid">Item dipilih</span>
+              <span className="font-medium text-hi">{selectedRows.length}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Total berat</span>
-              <span className="font-medium text-gray-900">{formatKg(totalWeight)}</span>
+              <span className="text-mid">Total berat</span>
+              <span className="font-medium text-hi">{formatKg(totalWeight)}</span>
             </div>
 
             <Separator />
 
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Subtotal</span>
-              <span className="font-medium text-gray-900">{formatIDR(subtotal)}</span>
+              <span className="text-mid">Subtotal</span>
+              <span className="font-medium text-hi">{formatIDR(subtotal)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">
+              <span className="text-mid">
                 Biaya penanganan ({config.handling_fee_percent}%)
               </span>
-              <span className="font-medium text-gray-900">{formatIDR(handlingFee)}</span>
+              <span className="font-medium text-hi">{formatIDR(handlingFee)}</span>
             </div>
 
             <Separator />
 
             <div className="flex items-baseline justify-between">
-              <span className="text-sm font-medium text-gray-900">Total Bayar</span>
-              <span className="text-xl font-semibold text-green-700">{formatIDR(total)}</span>
+              <span className="text-sm font-medium text-hi">Total Bayar</span>
+              <span className="text-xl font-semibold text-success">{formatIDR(total)}</span>
             </div>
 
             <Button

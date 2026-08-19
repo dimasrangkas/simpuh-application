@@ -133,7 +133,7 @@ export function TagAbkPage({ ownerUserId, onBack }: { ownerUserId: number; onBac
                           <TableCell>
                             <span className="inline-flex items-center gap-1.5">
                               <span
-                                className="size-3 rounded-full border border-gray-300"
+                                className="size-3 rounded-full border border-border"
                                 style={{
                                   backgroundColor: crew ? crewTagHex(crew.crew_tag_color) : '#ccc',
                                 }}
@@ -184,19 +184,19 @@ export function TagAbkPage({ ownerUserId, onBack }: { ownerUserId: number; onBac
                     className={cn(
                       'flex w-full items-center gap-3 rounded-lg border px-3 py-2.5 text-left transition-colors',
                       selectedCrewId === c.id
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:bg-gray-50',
+                        ? 'border-primary bg-primary/8'
+                        : 'border-border hover:bg-bg',
                     )}
                   >
                     <span
-                      className="size-4 shrink-0 rounded-full border border-gray-300"
+                      className="size-4 shrink-0 rounded-full border border-border"
                       style={{ backgroundColor: crewTagHex(c.crew_tag_color) }}
                     />
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate text-sm font-medium text-gray-900">
+                      <span className="block truncate text-sm font-medium text-hi">
                         {c.name}
                       </span>
-                      <span className="block text-xs text-gray-500">Tag {c.crew_tag_color}</span>
+                      <span className="block text-xs text-mid">Tag {c.crew_tag_color}</span>
                     </span>
                     {selectedCrewId === c.id ? (
                       <Badge variant="default" className="shrink-0">
@@ -215,19 +215,19 @@ export function TagAbkPage({ ownerUserId, onBack }: { ownerUserId: number; onBac
             </CardHeader>
             <CardContent className="space-y-3">
               {perCrew.length === 0 ? (
-                <p className="text-sm text-gray-500">Belum ada data.</p>
+                <p className="text-sm text-mid">Belum ada data.</p>
               ) : (
                 perCrew.map((c) => {
                   const percent = totalTaggedWeight ? (c.weight / totalTaggedWeight) * 100 : 0
                   return (
                     <div key={c.id}>
                       <div className="mb-1 flex items-center justify-between text-sm">
-                        <span className="truncate text-gray-700">{c.name}</span>
-                        <span className="ml-2 shrink-0 font-medium text-gray-900">
+                        <span className="truncate text-mid">{c.name}</span>
+                        <span className="ml-2 shrink-0 font-medium text-hi">
                           {formatKg(c.weight)}
                         </span>
                       </div>
-                      <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                      <div className="h-2 w-full overflow-hidden rounded-full bg-border">
                         <div
                           className="h-full rounded-full transition-all"
                           style={{
@@ -236,7 +236,7 @@ export function TagAbkPage({ ownerUserId, onBack }: { ownerUserId: number; onBac
                           }}
                         />
                       </div>
-                      <p className="mt-0.5 text-right text-xs text-gray-400">
+                      <p className="mt-0.5 text-right text-xs text-low">
                         {percent.toFixed(1)}%
                       </p>
                     </div>

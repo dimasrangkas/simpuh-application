@@ -15,18 +15,18 @@ export function DialogContent({
 }: React.ComponentProps<typeof DialogPrimitive.Content>) {
   return (
     <DialogPrimitive.Portal>
-      <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/40" />
+      <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-[#102840]/40 backdrop-blur-[2px]" />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
           'fixed top-1/2 left-1/2 z-50 grid w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4',
-          'max-h-[90vh] overflow-y-auto rounded-xl border border-gray-200 bg-white p-6 shadow-lg',
+          'max-h-[90vh] overflow-y-auto rounded-lg border border-border bg-card p-6 shadow-lift',
           className,
         )}
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute top-4 right-4 rounded-sm text-gray-400 transition-colors hover:text-gray-700">
+        <DialogPrimitive.Close className="absolute top-4 right-4 rounded-sm text-low transition-colors hover:text-hi">
           <X className="size-4" />
           <span className="sr-only">Tutup</span>
         </DialogPrimitive.Close>
@@ -46,7 +46,7 @@ export function DialogFooter({ className, ...props }: React.ComponentProps<'div'
 export function DialogTitle({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>) {
   return (
     <DialogPrimitive.Title
-      className={cn('text-lg font-semibold text-gray-900', className)}
+      className={cn('text-lg font-extrabold tracking-tight text-hi', className)}
       {...props}
     />
   )
@@ -56,5 +56,5 @@ export function DialogDescription({
   className,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Description>) {
-  return <DialogPrimitive.Description className={cn('text-sm text-gray-500', className)} {...props} />
+  return <DialogPrimitive.Description className={cn('text-[13px] text-mid', className)} {...props} />
 }

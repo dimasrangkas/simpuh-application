@@ -95,7 +95,7 @@ export function UsersPage({ currentUserId }: { currentUserId: number }) {
               ) : (
                 users.map((u) => (
                   <TableRow key={u.id}>
-                    <TableCell className="font-medium text-gray-900">
+                    <TableCell className="font-medium text-hi">
                       {u.name}
                       {u.id === currentUserId ? (
                         <Badge variant="secondary" className="ml-2">
@@ -141,7 +141,7 @@ export function UsersPage({ currentUserId }: { currentUserId: number }) {
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="text-red-600 hover:bg-red-50"
+                          className="text-danger hover:bg-danger/8"
                           disabled={u.id === currentUserId}
                           onClick={() => {
                             deleteUser(u.id)
@@ -202,8 +202,8 @@ export function UsersPage({ currentUserId }: { currentUserId: number }) {
                   </SelectContent>
                 </Select>
               </Field>
-              <div className="flex items-center justify-between rounded-lg border border-gray-200 px-3 py-2.5">
-                <span className="text-sm text-gray-700">Akun aktif</span>
+              <div className="flex items-center justify-between rounded-lg border border-border px-3 py-2.5">
+                <span className="text-sm text-mid">Akun aktif</span>
                 <Switch
                   checked={draft.is_active}
                   onCheckedChange={(v) => setDraft({ ...draft, is_active: v })}

@@ -78,11 +78,11 @@ export function MorphologyPage() {
       />
 
       {!detector.isLive ? (
-        <div className="mb-5 flex items-start gap-3 rounded-lg border border-purple-200 bg-purple-50 px-4 py-3">
-          <Info className="mt-0.5 size-4 shrink-0 text-purple-600" />
-          <div className="text-sm text-purple-900">
+        <div className="mb-5 flex items-start gap-3 rounded-lg border border-accent/25 bg-accent/8 px-4 py-3">
+          <Info className="mt-0.5 size-4 shrink-0 text-accent" />
+          <div className="text-sm text-secondary">
             <p className="font-medium">Mode simulasi</p>
-            <p className="mt-0.5 text-purple-800">
+            <p className="mt-0.5 text-secondary">
               Modul AI belum terpasang. Ke depan deteksi berjalan otomatis lewat kamera IoT saat
               ikan ditimbang, tanpa scan manual. Alur dan tampilan di halaman ini sudah final —
               yang diganti nanti hanya sumber datanya.
@@ -116,18 +116,18 @@ export function MorphologyPage() {
               </Select>
             </Field>
 
-            <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 px-6 py-12">
+            <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-border bg-bg px-6 py-12">
               {scanning ? (
                 <>
-                  <Loader2 className="mb-3 size-10 animate-spin text-blue-600" />
-                  <p className="text-sm font-medium text-gray-700">Menganalisa citra…</p>
-                  <p className="mt-1 text-xs text-gray-500">Mendeteksi spesies, ukuran, dan kesegaran</p>
+                  <Loader2 className="mb-3 size-10 animate-spin text-primary" />
+                  <p className="text-sm font-medium text-mid">Menganalisa citra…</p>
+                  <p className="mt-1 text-xs text-mid">Mendeteksi spesies, ukuran, dan kesegaran</p>
                 </>
               ) : (
                 <>
-                  <ScanLine className="mb-3 size-10 text-gray-400" />
-                  <p className="text-sm font-medium text-gray-700">Siap melakukan scan</p>
-                  <p className="mt-1 text-xs text-gray-500">
+                  <ScanLine className="mb-3 size-10 text-low" />
+                  <p className="text-sm font-medium text-mid">Siap melakukan scan</p>
+                  <p className="mt-1 text-xs text-mid">
                     Arahkan kamera ke hasil tangkapan lalu tekan tombol di bawah
                   </p>
                 </>
@@ -155,8 +155,8 @@ export function MorphologyPage() {
             ) : (
               <div className="space-y-4">
                 <div>
-                  <p className="text-xs text-gray-500">Spesies terdeteksi</p>
-                  <p className="text-lg font-semibold text-gray-900">{result.detected_category}</p>
+                  <p className="text-xs text-mid">Spesies terdeteksi</p>
+                  <p className="text-lg font-semibold text-hi">{result.detected_category}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5">
@@ -166,16 +166,16 @@ export function MorphologyPage() {
 
                 <dl className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <dt className="text-gray-500">Estimasi panjang</dt>
-                    <dd className="text-gray-900">{result.estimated_length_cm} cm</dd>
+                    <dt className="text-mid">Estimasi panjang</dt>
+                    <dd className="text-hi">{result.estimated_length_cm} cm</dd>
                   </div>
                   <div className="flex justify-between">
-                    <dt className="text-gray-500">Waktu proses</dt>
-                    <dd className="text-gray-900">{result.processing_time_ms} ms</dd>
+                    <dt className="text-mid">Waktu proses</dt>
+                    <dd className="text-hi">{result.processing_time_ms} ms</dd>
                   </div>
                   <div className="flex justify-between">
-                    <dt className="text-gray-500">Sumber</dt>
-                    <dd className="text-gray-900">{result.source}</dd>
+                    <dt className="text-mid">Sumber</dt>
+                    <dd className="text-hi">{result.source}</dd>
                   </div>
                 </dl>
 
@@ -229,7 +229,7 @@ export function MorphologyPage() {
                 scans.map((s) => (
                   <TableRow key={s.id}>
                     <TableCell>{formatDateTime(s.scanned_at)}</TableCell>
-                    <TableCell className="font-medium text-gray-900">{s.detected_category}</TableCell>
+                    <TableCell className="font-medium text-hi">{s.detected_category}</TableCell>
                     <TableCell className={confidenceColor(s.confidence_score)}>
                       {s.confidence_score}%
                     </TableCell>
@@ -241,11 +241,11 @@ export function MorphologyPage() {
                     <TableCell>{s.estimated_length_cm} cm</TableCell>
                     <TableCell>
                       {s.weighing_record_id != null ? (
-                        <span className="inline-flex items-center gap-1 text-blue-600">
+                        <span className="inline-flex items-center gap-1 text-primary">
                           <Link2 className="size-3.5" /> #{s.weighing_record_id}
                         </span>
                       ) : (
-                        <span className="text-gray-400">—</span>
+                        <span className="text-low">—</span>
                       )}
                     </TableCell>
                   </TableRow>
@@ -257,7 +257,7 @@ export function MorphologyPage() {
       </Card>
 
       {/* Sisipkan kategori referensi supaya petugas bisa mencocokkan manual. */}
-      <p className="mt-4 text-xs text-gray-400">
+      <p className="mt-4 text-xs text-low">
         Kategori acuan: {categories.map((c) => c.category_name).join(' • ')}
       </p>
     </div>
